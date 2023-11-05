@@ -1,0 +1,54 @@
+---
+const response = await fetch('https://apiaprendescrypto.radixshell.workers.dev/');
+const data = await response.json();
+---
+
+<table>
+    <thead>
+      <tr>
+        <th>Datos del nodo:</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Estado</td>
+        <td>{data.Status_online}</td>
+      </tr>
+      <tr>
+        <td>Tiempo activo (14 días)</td>
+        <td>{data.Recent_Uptime}</td>
+      </tr>
+      <tr>
+        <td>Comisión del nodo</td>
+        <td>0,35 %</td>
+      </tr>
+      <tr>
+        <td>Delegadores</td>
+        <td>{data.Delegators} cuentas</td>
+      </tr>
+      <tr>
+        <td>Total delegado</td>
+        <td>{data.Delegated_Stake}</td>
+      </tr>
+      <tr>
+      <td>Delegación propia</td>
+        <td>{data.Owner_Delegation}</td>
+      </tr>
+      <tr>
+        <td>Factor LSUxXRD</td>
+          <td>{data.LSU2XRD_Factor}</td>
+        </tr>
+        <tr>
+            <td>Propuestas perdidas (14 días)</td>
+            <td>{data.Recent_proposals_missed} propuestas</td>
+        </tr>
+        <tr>
+            <td>Propuestas completadas (14 días)</td>
+            <td>{data.Total_proposals} propuestas</td>
+        </tr>
+    </tbody>
+    <tfoot>
+   
+    </tfoot>
+  </table>

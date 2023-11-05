@@ -4,7 +4,7 @@ title: Introducción a Scrypto
 ---
 
 import { Icon } from 'astro-icon'
-import { Notification } from 'accessible-astro-components'
+import { Accordion, AccordionItem, Notification } from 'accessible-astro-components'
 
 # Introducción a Scrypto
 
@@ -31,7 +31,61 @@ Scrypto toma prestada la sintaxis del lenguaje [Rust](https://www.rust-lang.org/
 </Notification>
 
 
-### Instalación de herramientas necesarias
+### Instalación de herramientas y simulador
+
+<Notification type="info">
+  <Icon pack="ion" name="information-circle-outline" />
+  <p>
+    <strong>Info:</strong> Las siguientes intrucciones están basadas en la <a href="https://docs.radixdlt.com/docs/getting-rust-scrypto">documentación oficial</a>.
+  </p>
+</Notification>
+
+<div class="space-content">
+  <h4>Instalación Rust y herramientas</h4>
+  Para comenzar a trabajar con Scrypto, primero debe preparar tu sistema para el desarrollo de Rust.
+  <Accordion>
+    <AccordionItem header="Windows">
+      **Primero:** asegurate de que tienes instalado [*git*](https://git-scm.com/), puedes ejecutar la siguiente instrucción:
+      ```powershell
+      git -v
+      ```
+      el resultado deberia ser algo parecido a esto: 
+      ```powershell
+      git version 2.39
+      ```
+      si no entonces puedes instalarlo desde el siguiente enlace -> [*Instalar Git*](https://git-scm.com/downloads)
+
+      **Segundo:** habilita la compatibilidad con rutas largas de git con la siguiente instrucción:
+      ```powershell
+      git config --system core.longpaths true
+      ```
+
+      **Tercero:** Instalaremos "Desktop development with C++" que se encuentra dentro de [Build Tools for Visual Studio 2019](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16)
+
+      **Cuarto:** Descargaremos e instalaremos [rustup-init.exe](https://win.rustup.rs/x86_64)
+
+      **Quinto:** Instalar [LLVM 13.0.1](https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.1/LLVM-13.0.1-win64.exe) Importante: Asegurate de marcar la opción que agrega LLVM a la ruta del sistema.
+
+      **Sexto:** Habilitamos *cargo* desde la linea de comando (PowerShell):
+      ```powershell
+      set path=%USERPROFILE%/.cargo/env
+      ```
+
+      **Septimo:** Añadimos WebAssembly target desde la misma linea de comando:
+      ```powershell
+      rustup target add wasm32-unknown-unknown
+      ```
+    </AccordionItem>
+  </Accordion>
+</div>
+
+Finalmente instala el Simulador de Radix Engine y la línea de comandos con las siguientes instrucciones (el proceso puede durar unos minutos): 
+```powershell
+git clone https://github.com/radixdlt/radixdlt-scrypto.git
+cd radixdlt-scrypto
+cargo install --path ./simulator
+```
+
 
 ### Hola mundo
 
